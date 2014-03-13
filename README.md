@@ -1,4 +1,6 @@
-= Subscribem
+### Subscribem
+
+[![Build Status](https://secure.travis-ci.org/juliobetta/subscribem.png)](http://travis-ci.org/juliobetta/subscribem)
 
 This project rocks and uses MIT-LICENSE.
 
