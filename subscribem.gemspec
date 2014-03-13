@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'capybara'
   s.add_dependency "bcrypt-ruby", "3.1.2"
+  s.add_dependency "warden", "1.2.3"
 end
