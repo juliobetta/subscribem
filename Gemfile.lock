@@ -4,6 +4,7 @@ PATH
     subscribem (0.0.1)
       bcrypt-ruby (= 3.1.2)
       rails (~> 4.0.3)
+      warden (= 1.2.3)
 
 GEM
   remote: https://rubygems.org/
@@ -103,6 +104,8 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.39)
+    warden (1.2.3)
+      rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
