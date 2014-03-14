@@ -45,6 +45,8 @@ GEM
       xpath (~> 2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    factory_girl (4.1.0)
+      activesupport (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     mail (2.5.4)
@@ -114,6 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  factory_girl (= 4.1.0)
   rspec-rails
   sqlite3
   subscribem!
