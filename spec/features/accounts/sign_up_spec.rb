@@ -35,6 +35,22 @@ feature 'Accounts' do
     page.current_url.should == 'http://www.example.com/subscribem/accounts'
     page.should have_content('Sorry, your account could not be created.')
     page.should have_content('Subdomain has already been taken')
+  end
 
+  scenario 'Subdomain with restricted name' do
+    visit subscribem.root_path
+    click_link 'Account Sign Up'
+
+    fill_in 'Name', with: 'Test'
+    fill_in 'Subdomain', with: '<admin>'
+    fill_in 'Email', with: 'test@example.com'
+    fill_in 'Password', with: 'password', exact: true
+    fill_in 'Password confirmation', with: 'password'
+
+    click_button 'Create Account'
+
+    page.current_url.should == 'http://www.example.com/subscribem/accounts'
+    page.should have_content('Sorry, your account could not be created.')
+    page.should have_content('Subdomain is not allowed. Please choose another subdomain.')
   end
 end
