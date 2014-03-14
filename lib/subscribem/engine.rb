@@ -1,4 +1,5 @@
-require "warden"
+require 'warden'
+require 'dynamic_form'
 
 module Subscribem
   class Engine < ::Rails::Engine
@@ -8,7 +9,7 @@ module Subscribem
       g.test_framework :rspec, view_specs: false
     end
 
-    initializer "subscribem.middleware.warden" do
+    initializer 'subscribem.middleware.warden' do
       Rails.application.config.middleware.use Warden::Manager do |manager|
         manager.serialize_into_session do |user|
           user.id
