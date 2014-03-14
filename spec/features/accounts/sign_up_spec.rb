@@ -16,7 +16,7 @@ feature 'Accounts' do
 
     page.should have_content(success_message)
     page.should have_content('Signed in as subscribem@example.com')
-    page.current_url.should == 'http://test.example.com/subscribem/'
+    page.current_url.should == 'http://test.example.com/'
   end
 
   scenario 'Ensure subdomain uniqueness' do
@@ -32,7 +32,7 @@ feature 'Accounts' do
 
     click_button 'Create Account'
 
-    page.current_url.should == 'http://www.example.com/subscribem/accounts'
+    page.current_url.should == 'http://www.example.com/accounts'
     page.should have_content('Sorry, your account could not be created.')
     page.should have_content('Subdomain has already been taken')
   end
@@ -49,7 +49,7 @@ feature 'Accounts' do
 
     click_button 'Create Account'
 
-    page.current_url.should == 'http://www.example.com/subscribem/accounts'
+    page.current_url.should == 'http://www.example.com/accounts'
     page.should have_content('Sorry, your account could not be created.')
     page.should have_content('Subdomain is not allowed. Please choose another subdomain.')
   end
