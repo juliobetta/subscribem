@@ -4,17 +4,20 @@ Warden::Strategies.add(:password) do
   # to the Rails stack. Therefore we need to use the ActionDispatch::Http::URL.extract_subdomains
   # method to get the subdomain for this request. We also need to use strings for the params keys for
   # the same reasons.
+
+  def subdomain
+    ActionDispatch::Http::URL.extract_subdomains(request.host, 1)
+  end
+
   def valid?
-    host      = request.host
-    subdomain = ActionDispatch::Http::URL.extract_subdomains(host, 1)
     subdomain.present? && params['user']
   end
 
   def authenticate!
-    if user = Subscribem::User.find_by(email: params['user']['email'])
-      user.authenticate(params['user']['password']) ? success!(user) : fail!
-    else
-      fail!
-    end
+    return fail! unless account = Subscribem::Account.find_by(subdomain: subdomain)
+    return fail! unless user    = account.users.find_by(email: params['user']['email'])
+    return fail! unless user.authenticate(params['user']['password'])
+
+    success! user
   end
 end
