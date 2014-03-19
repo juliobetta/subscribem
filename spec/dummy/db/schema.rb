@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314065420) do
+ActiveRecord::Schema.define(version: 20140319050020) do
 
   create_table "subscribem_accounts", force: true do |t|
     t.string   "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20140314065420) do
 
   add_index "subscribem_accounts", ["owner_id"], name: "index_subscribem_accounts_on_owner_id"
   add_index "subscribem_accounts", ["subdomain"], name: "index_subscribem_accounts_on_subdomain"
+
+  create_table "subscribem_members", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscribem_members", ["account_id"], name: "index_subscribem_members_on_account_id"
+  add_index "subscribem_members", ["user_id"], name: "index_subscribem_members_on_user_id"
 
   create_table "subscribem_users", force: true do |t|
     t.string   "email"
